@@ -26,9 +26,9 @@ Proyecto de Arquitectura de Desarrollo Móvil y Web, INGT1003, sección 001, Uni
 
 ## Video del Hito 3
 
-**Video final del Hito 3: [Aquila.mp4](Aquila.mp4)
+**Video final del Hito 3:** [Aquila.mp4](Aquila.mp4)
 
-El video se encuentra disponible directamente en este repositorio..
+El video se encuentra disponible directamente en este repositorio.
 
 ## Probar el producto
 
