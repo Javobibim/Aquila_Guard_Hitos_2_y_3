@@ -1,0 +1,296 @@
+[
+  {
+    "id": "U0",
+    "tipo": "enlace",
+    "label": "fraude_ficticio",
+    "input": "https://bancoestado.cl.acceso.example",
+    "family": "URL de escenario ficticio"
+  },
+  {
+    "id": "U1",
+    "tipo": "enlace",
+    "label": "fraude_ficticio",
+    "input": "https://microsfot.example",
+    "family": "URL de escenario ficticio"
+  },
+  {
+    "id": "U2",
+    "tipo": "enlace",
+    "label": "fraude_ficticio",
+    "input": "https://paypaal.example",
+    "family": "URL de escenario ficticio"
+  },
+  {
+    "id": "U3",
+    "tipo": "enlace",
+    "label": "fraude_ficticio",
+    "input": "https://apple-soporte.example",
+    "family": "URL de escenario ficticio"
+  },
+  {
+    "id": "U4",
+    "tipo": "enlace",
+    "label": "fraude_ficticio",
+    "input": "https://bancoestado-seguridad.example",
+    "family": "URL de escenario ficticio"
+  },
+  {
+    "id": "U5",
+    "tipo": "enlace",
+    "label": "fraude_ficticio",
+    "input": "https://seguridad.bancoestado.example",
+    "family": "URL de escenario ficticio"
+  },
+  {
+    "id": "U6",
+    "tipo": "enlace",
+    "label": "fraude_ficticio",
+    "input": "http://192.0.2.1/cuenta",
+    "family": "URL de escenario ficticio"
+  },
+  {
+    "id": "U7",
+    "tipo": "enlace",
+    "label": "fraude_ficticio",
+    "input": "https://user@otro.example",
+    "family": "URL de escenario ficticio"
+  },
+  {
+    "id": "U8",
+    "tipo": "enlace",
+    "label": "fraude_ficticio",
+    "input": "https://xn--bcher-kva.example/cuenta",
+    "family": "URL de escenario ficticio"
+  },
+  {
+    "id": "L0",
+    "tipo": "enlace",
+    "label": "legitimo_ficticio",
+    "input": "https://bancoestado.cl",
+    "family": "Control de URL"
+  },
+  {
+    "id": "L1",
+    "tipo": "enlace",
+    "label": "legitimo_ficticio",
+    "input": "https://support.apple.com",
+    "family": "Control de URL"
+  },
+  {
+    "id": "L2",
+    "tipo": "enlace",
+    "label": "legitimo_ficticio",
+    "input": "https://login.microsoftonline.com",
+    "family": "Control de URL"
+  },
+  {
+    "id": "L3",
+    "tipo": "enlace",
+    "label": "legitimo_ficticio",
+    "input": "https://biblioteca.example",
+    "family": "Control de URL"
+  },
+  {
+    "id": "L4",
+    "tipo": "enlace",
+    "label": "legitimo_ficticio",
+    "input": "https://accounts.google.com",
+    "family": "Control de URL"
+  },
+  {
+    "id": "L5",
+    "tipo": "enlace",
+    "label": "legitimo_ficticio",
+    "input": "https://www.paypal.com",
+    "family": "Control de URL"
+  },
+  {
+    "id": "L6",
+    "tipo": "enlace",
+    "label": "legitimo_ficticio",
+    "input": "https://universidad.example/?q=urgente+clave+premio",
+    "family": "Control de URL"
+  },
+  {
+    "id": "L7",
+    "tipo": "enlace",
+    "label": "legitimo_ficticio",
+    "input": "https://tienda.example/producto",
+    "family": "Control de URL"
+  },
+  {
+    "id": "L8",
+    "tipo": "enlace",
+    "label": "legitimo_ficticio",
+    "input": "https://mail.proveedor.co.uk",
+    "family": "Control de URL"
+  },
+  {
+    "id": "L9",
+    "tipo": "enlace",
+    "label": "legitimo_ficticio",
+    "input": "https://archivo.example/documentos",
+    "family": "Control de URL"
+  },
+  {
+    "id": "R0",
+    "tipo": "enlace",
+    "label": "reportado_copia",
+    "input": "https://0-105.com",
+    "family": "Dominio de instantánea: no visitado"
+  },
+  {
+    "id": "R1",
+    "tipo": "enlace",
+    "label": "reportado_copia",
+    "input": "https://018uh.mjt.lu",
+    "family": "Dominio de instantánea: no visitado"
+  },
+  {
+    "id": "R2",
+    "tipo": "enlace",
+    "label": "reportado_copia",
+    "input": "https://1823kingroyal.com",
+    "family": "Dominio de instantánea: no visitado"
+  },
+  {
+    "id": "M0",
+    "tipo": "correo",
+    "label": "fraude_ficticio",
+    "input": "From: PayPal <servicio@documentos.example>\nReply-To: pagos@revision.example\nSubject: Estado de cuenta\n\nTu documento está disponible.",
+    "family": "Correo o mensaje de escenario ficticio"
+  },
+  {
+    "id": "M1",
+    "tipo": "correo",
+    "label": "fraude_ficticio",
+    "input": "Content-Type: text/html\n\n<a href=\"https://consulta.example\">https://www.bancoestado.cl/cuenta</a>",
+    "family": "Correo o mensaje de escenario ficticio"
+  },
+  {
+    "id": "M2",
+    "tipo": "correo",
+    "label": "fraude_ficticio",
+    "input": "From: avisos@cuenta.example\nAuthentication-Results: receptor.example; spf=fail; dkim=fail; dmarc=fail\n\nHay un documento disponible.",
+    "family": "Correo o mensaje de escenario ficticio"
+  },
+  {
+    "id": "M3",
+    "tipo": "correo",
+    "label": "fraude_ficticio",
+    "input": "Content-Type: text/plain\nContent-Transfer-Encoding: base64\n\nQ29uc3VsdGEgaHR0cHM6Ly8wLTEwNS5jb20=",
+    "family": "Correo o mensaje de escenario ficticio"
+  },
+  {
+    "id": "M4",
+    "tipo": "correo",
+    "label": "fraude_ficticio",
+    "input": "From: documentos@proveedor.example\nReply-To: cobranzas@otraempresa.example\nSubject: Informe solicitado\n\nAdjunto la referencia del documento.",
+    "family": "Correo o mensaje de escenario ficticio"
+  },
+  {
+    "id": "M5",
+    "tipo": "correo",
+    "label": "fraude_ficticio",
+    "input": "El proveedor modificó los datos bancarios. Realiza el abono a la nueva cuenta indicada.",
+    "family": "Correo o mensaje de escenario ficticio"
+  },
+  {
+    "id": "M6",
+    "tipo": "correo",
+    "label": "fraude_ficticio",
+    "input": "Para consultar el documento debes activar macros y habilitar contenido.",
+    "family": "Correo o mensaje de escenario ficticio"
+  },
+  {
+    "id": "M7",
+    "tipo": "correo",
+    "label": "fraude_ficticio",
+    "input": "Comparte tu código de verificación para completar la operación.",
+    "family": "Correo o mensaje de escenario ficticio"
+  },
+  {
+    "id": "M8",
+    "tipo": "correo",
+    "label": "fraude_ficticio",
+    "input": "Su cuenta suspendida requiere atención inmediata en https://bancoestado-seguridad.example",
+    "family": "Correo o mensaje de escenario ficticio"
+  },
+  {
+    "id": "M9",
+    "tipo": "correo",
+    "label": "fraude_ficticio",
+    "input": "Visita https://www.google.com/url?q=https%3A%2F%2F0-105.com",
+    "family": "Correo o mensaje de escenario ficticio"
+  },
+  {
+    "id": "N0",
+    "tipo": "correo",
+    "label": "legitimo_ficticio",
+    "input": "From: avisos@biblioteca.example\nReply-To: ayuda@mail.biblioteca.example\nSubject: Horario del taller\n\nEl taller comienza a las diez.",
+    "family": "Correo o mensaje de escenario ficticio"
+  },
+  {
+    "id": "N1",
+    "tipo": "correo",
+    "label": "legitimo_ficticio",
+    "input": "Nunca comparta su clave con otras personas. Use los canales oficiales.",
+    "family": "Correo o mensaje de escenario ficticio"
+  },
+  {
+    "id": "N2",
+    "tipo": "correo",
+    "label": "legitimo_ficticio",
+    "input": "No compartas tu código de verificación. Este mensaje es un recordatorio de seguridad.",
+    "family": "Correo o mensaje de escenario ficticio"
+  },
+  {
+    "id": "N3",
+    "tipo": "correo",
+    "label": "legitimo_ficticio",
+    "input": "La oficina confirma la recepción de tu solicitud. Puedes consultar los horarios en https://municipio.example",
+    "family": "Correo o mensaje de escenario ficticio"
+  },
+  {
+    "id": "N4",
+    "tipo": "correo",
+    "label": "legitimo_ficticio",
+    "input": "From: comunicados@proveedor.co.uk\nReply-To: soporte@mail.proveedor.co.uk\nAuthentication-Results: receptor.example; spf=pass; dkim=pass; dmarc=pass\n\nLa próxima reunión es el jueves.",
+    "family": "Correo o mensaje de escenario ficticio"
+  },
+  {
+    "id": "N5",
+    "tipo": "correo",
+    "label": "legitimo_ficticio",
+    "input": "Content-Type: text/html\n\n<a href=\"https://biblioteca.example/horarios\">https://biblioteca.example</a>",
+    "family": "Correo o mensaje de escenario ficticio"
+  },
+  {
+    "id": "N6",
+    "tipo": "correo",
+    "label": "legitimo_ficticio",
+    "input": "El premio de literatura se entregará durante el taller. Este es un anuncio informativo.",
+    "family": "Correo o mensaje de escenario ficticio"
+  },
+  {
+    "id": "N7",
+    "tipo": "correo",
+    "label": "legitimo_ficticio",
+    "input": "Es urgente reparar la impresora de la oficina. No se solicitan datos ni pagos.",
+    "family": "Correo o mensaje de escenario ficticio"
+  },
+  {
+    "id": "B0",
+    "tipo": "correo",
+    "label": "fraude_ficticio",
+    "input": "From: gestion@proveedor.example\nAuthentication-Results: receptor.example; spf=pass; dkim=pass; dmarc=pass\nSubject: Documento solicitado\n\nConsulta tu documento en https://proveedor.example/documentos/123",
+    "family": "Límite deliberado: compromiso o fraude sin señales observables"
+  },
+  {
+    "id": "B1",
+    "tipo": "correo",
+    "label": "fraude_ficticio",
+    "input": "From: amiga@correo.example\nSubject: Fotos\n\nTe comparto https://album.example/fotos para que veas las imágenes.",
+    "family": "Límite deliberado: compromiso o fraude sin señales observables"
+  }
+]

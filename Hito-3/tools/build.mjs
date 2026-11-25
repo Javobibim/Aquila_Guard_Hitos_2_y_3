@@ -1,0 +1,44 @@
+import {readFile,writeFile,mkdir,cp,readdir,realpath,rm} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {createWriteStream} from 'node:fs';
+import archiver from 'archiver';
+import {fileURLToPath} from 'node:url';
+import path from 'node:path';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const read=p=>readFile(path.join(root,p),'utf8');
+const version=JSON.parse(await read('extension/manifest.json')).version;
+const dist=path.resolve(root,'dist');
+await mkdir(dist,{recursive:true});
+if(path.resolve(await realpath(dist))!==path.join(await realpath(root),'dist'))throw Error('dist debe estar dentro del proyecto.');
+for(const target of ['app','extension']) {
+ const out=path.join(dist,target),source=path.join(root,target);
+ if(path.dirname(path.resolve(out))!==dist)throw Error('Directorio de salida inesperado.');
+ await rm(out,{recursive:true,force:true});
+ await cp(source,out,{recursive:true,filter:file=>target!=='app'||path.relative(source,file).split(path.sep)[0]!=='downloads'});
+ await cp(path.join(root,'shared'),path.join(out,'shared'),{recursive:true});
+ await mkdir(path.join(out,'data'),{recursive:true});
+ for(const name of ['reputation.json','LICENSE_PhishDestroy.txt','README.md','public_suffix_list.dat','LICENSE_MPL_2_0.txt'])await cp(path.join(root,'data',name),path.join(out,'data',name));
+}
+for(const name of ['url-rules.js','psl-data.js','advanced.js','engine.js'])await cp(path.join(root,'shared',name),path.join(root,'backend-hito2/data',name));
+for(const name of ['reputation.json','LICENSE_PhishDestroy.txt','public_suffix_list.dat','LICENSE_MPL_2_0.txt'])await cp(path.join(root,'data',name),path.join(root,'backend-hito2/data',name));
+await rm(path.join(root,'dist/app/sw-template.js'),{force:true});
+const {size}=await (await import('node:fs/promises')).stat(path.join(root,'data/reputation.json'));
+const privacy=(await read('app/privacy.html')).replace('href="app.css"','href="privacy.css"').replaceAll('href="index.html"','href="welcome.html"').replace('src="assets/logo.png"','src="assets/aquila_guard_logo.png"');
+await writeFile(path.join(root,'dist/extension/privacy.html'),privacy);
+await writeFile(path.join(root,'extension/privacy.html'),privacy);
+await cp(path.join(root,'app/app.css'),path.join(root,'dist/extension/privacy.css'));
+const appOut=path.join(root,'dist/app');
+const install=(await read('app/instalar.html')).replaceAll('__EXTENSION_VERSION__',version);
+await writeFile(path.join(appOut,'instalar.html'),install);
+const assetList=['prueba-publicidad.html','casos-reportados.html','casos-reportados.js','data/real-cases.json','ayuda.html','prueba-extension.html','prueba-extension.js','index.html','instalar.html','privacy.html','app.css','app.js','install.js','manifest.webmanifest','assets/logo.png','assets/icon-192.png','assets/icon-512.png','assets/qr-app.svg','examples/correo-con-senales.eml',...(await readdir(path.join(appOut,'shared'))).filter(n=>n.endsWith('.js')).map(n=>'shared/'+n)];
+assetList.push('portal.css','creditos.html');
+const hash=createHash('sha256');for(const file of assetList)hash.update(await readFile(path.join(appOut,file)));
+const sw=(await read('app/sw-template.js')).replace('__BUILD_ID__',hash.digest('hex').slice(0,16)).replace('__ASSETS__',JSON.stringify(assetList));
+await writeFile(path.join(appOut,'sw.js'),sw);
+await mkdir(path.join(appOut,'downloads'),{recursive:true});
+await new Promise((resolve,reject)=>{
+ const output=createWriteStream(path.join(appOut,`downloads/Aquila_Guard_Chrome_BETA_${version}.zip`));
+ const archive=archiver('zip',{zlib:{level:9}});output.on('close',resolve);output.on('error',reject);archive.on('error',reject);
+ archive.pipe(output);archive.directory(path.join(root,'dist/extension'),false);archive.finalize().catch(reject);
+});
+console.log(JSON.stringify({version,app:'dist/app',extensionDraft:'dist/extension',reputationBytes:size,pwaAssets:assetList.length}));

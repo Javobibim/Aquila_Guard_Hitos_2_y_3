@@ -1,0 +1,8 @@
+Aquila Guard - preparación móvil
+
+Kotlin standard library 2.2.21: JetBrains y colaboradores, Apache-2.0. https://github.com/JetBrains/kotlin
+Gradle Wrapper 8.13: Gradle y colaboradores, Apache-2.0; ver NOTICE_Gradle.txt. https://gradle.org/
+Public Suffix List: MPL-2.0; fuente y licencia conservadas en los datos.
+PhishDestroy primary: licencia de la instantánea incluida en LICENSE_PhishDestroy.txt.
+JUnit se usa solo en pruebas y no forma parte del APK.
+Las herramientas Java/SDK no se redistribuyen en este paquete fuente.

@@ -1,0 +1,9 @@
+From: PayPal <notificaciones@documentos-cuenta.example>
+Reply-To: ayuda@revision-pagos.example
+To: usuario@destinatario.example
+Subject: Documento de cuenta disponible
+Authentication-Results: receptor.example; spf=fail smtp.mailfrom=documentos-cuenta.example; dkim=fail; dmarc=fail
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+
+<html><body><p>Hola, hay un documento disponible en tu cuenta.</p><a href="https://bancoestado.cl.acceso.example/consulta">https://www.paypal.com/mi-cuenta</a><p>Ejemplo ficticio para una prueba de señales. No abrir el destino.</p></body></html>

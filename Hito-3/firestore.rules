@@ -1,0 +1,101 @@
+rules_version = '2';
+service cloud.firestore {
+ match /databases/{database}/documents {
+  function owner(uid) { return request.auth != null && request.auth.uid == uid; }
+ function verifiedOwner(uid) {
+  return owner(uid) && request.auth.token.get('email_verified', false) == true;
+ }
+  function schema(d) {
+   return d.keys().hasAll(['source','inputType','hostname','preview','classification','hasSignals','reasons','recommendation','ruleVersion','intelVersion','reviewed','note','createdAt','updatedAt'])
+    && d.keys().hasOnly(['source','inputType','hostname','preview','classification','hasSignals','reasons','recommendation','ruleVersion','intelVersion','reviewed','note','createdAt','updatedAt'])
+    && d.source in ['app','extension'] && d.inputType in ['enlace','correo','mensaje','telefono']
+    && d.hostname is string && d.hostname.size() <= 253
+    && d.preview is string && d.preview.size() <= 300
+    && d.classification in ['reported','signals','no_match','format_only']
+    && d.hasSignals is bool && d.reviewed is bool
+    && d.reasons is string && d.reasons.size() <= 6000
+    && d.recommendation is string && d.recommendation.size() <= 500
+    && d.ruleVersion is string && d.ruleVersion.size() <= 30
+    && d.intelVersion is string && d.intelVersion.size() <= 50
+    && d.note is string && d.note.size() <= 300
+    && d.createdAt is timestamp && d.updatedAt is timestamp;
+  }
+  match /users/{uid}/analyses/{id} {
+   allow get: if verifiedOwner(uid);
+   allow list: if verifiedOwner(uid) && request.query.limit != null && request.query.limit <= 50
+    && request.query.get('offset', 0) == 0;
+   allow create: if verifiedOwner(uid) && id.size() <= 64 && schema(request.resource.data)
+    && request.resource.data.createdAt == request.time && request.resource.data.updatedAt == request.time
+    && request.resource.data.reviewed == false && request.resource.data.note == '';
+   allow update: if verifiedOwner(uid) && schema(request.resource.data)
+    && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['reviewed','note','updatedAt'])
+    && request.resource.data.diff(resource.data).affectedKeys().hasAny(['reviewed','note'])
+    && request.time >= resource.data.updatedAt + duration.value(2,'s')
+    && request.resource.data.updatedAt == request.time;
+   allow delete: if verifiedOwner(uid) && resource != null;
+  }
+  function phoneKey(key) { return key is string && key.matches('^[a-f0-9]{64}$'); }
+  function phoneGrant(d) {
+   return d.keys().hasAll(['key','count','windowStartedAt','updatedAt'])
+    && d.keys().hasOnly(['key','count','windowStartedAt','updatedAt'])
+    && phoneKey(d.key) && d.count is int && d.count >= 1 && d.count <= 20
+    && d.windowStartedAt is timestamp && d.updatedAt == request.time;
+  }
+  function canReadPhone(key, uid) {
+   let grant = get(/databases/$(database)/documents/phoneLookupGrants/$(uid)).data;
+   return grant.key == key && request.time < grant.updatedAt + duration.value(15,'s');
+  }
+  function activePhoneReport(key, d) {
+   let evidence = get(/databases/$(database)/documents/phoneReportEvidence/$(key)).data;
+   return d.keys().hasOnly(['status']) && d.status in ['reviewed','demo']
+    && evidence.status == d.status && evidence.expiresAt is timestamp
+    && evidence.expiresAt > request.time;
+  }
+  match /phoneLookupGrants/{uid} {
+   allow get: if verifiedOwner(uid);
+   allow create: if verifiedOwner(uid) && phoneGrant(request.resource.data)
+    && request.resource.data.count == 1 && request.resource.data.windowStartedAt == request.time;
+   allow update: if verifiedOwner(uid) && phoneGrant(request.resource.data)
+    && request.time >= resource.data.updatedAt + duration.value(6,'s')
+    && ((request.time >= resource.data.windowStartedAt + duration.value(1,'d')
+     && request.resource.data.windowStartedAt == request.time && request.resource.data.count == 1)
+     || (request.time < resource.data.windowStartedAt + duration.value(1,'d')
+     && request.resource.data.windowStartedAt == resource.data.windowStartedAt
+     && request.resource.data.count == resource.data.count + 1));
+  }
+  match /phoneReports/{key} {
+   allow get: if request.auth != null && verifiedOwner(request.auth.uid) && phoneKey(key)
+    && canReadPhone(key, request.auth.uid)
+    && (resource == null || activePhoneReport(key, resource.data));
+  }
+  function phoneTip(d) {
+   return d.keys().hasOnly(['category','origin','status','createdAt'])
+    && d.category in ['smishing','impersonation','callback']
+    && d.origin in ['caller_id','callback_number','sms_sender']
+    && d.status in ['pending','approved','declined'] && d.createdAt is timestamp;
+  }
+  function phoneTipLimit(uid, key) {
+   let permit = getAfter(/databases/$(database)/documents/phoneTipLimits/$(uid)).data;
+   return permit.key == key && permit.updatedAt == request.time;
+  }
+  function newPhoneTip(uid, key) {
+   let path = /databases/$(database)/documents/users/$(uid)/phoneTips/$(key);
+   return !exists(path) && getAfter(path).data.createdAt == request.time;
+  }
+  match /phoneTipLimits/{uid} {
+   allow get: if verifiedOwner(uid);
+   allow create, update: if verifiedOwner(uid)
+    && request.resource.data.keys().hasOnly(['key','updatedAt'])
+    && phoneKey(request.resource.data.key) && request.resource.data.updatedAt == request.time
+    && (resource == null || request.time >= resource.data.updatedAt + duration.value(10,'m'))
+    && newPhoneTip(uid, request.resource.data.key);
+  }
+  match /users/{uid}/phoneTips/{key} {
+   allow get: if verifiedOwner(uid) && (resource == null || phoneTip(resource.data));
+   allow create: if verifiedOwner(uid) && phoneKey(key) && phoneTip(request.resource.data)
+    && request.resource.data.status == 'pending' && request.resource.data.createdAt == request.time
+    && phoneTipLimit(uid,key);
+  }
+  match /{document=**} { allow read, write: if false; }
+ }
+}

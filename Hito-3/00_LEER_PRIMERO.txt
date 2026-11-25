@@ -1,0 +1,10 @@
+AQUILA GUARD | ENTREGA DEL HITO 3
+
+Integre el contenido de esta carpeta en la rama principal del repositorio del equipo.
+Si el repositorio ya tiene un README, agregue la sección del Hito 3 al README existente.
+Complete los tres usuarios de GitHub y compruebe el acceso de lectura del profesor.
+Agregue el enlace al video final en el README y compruebe que se abre sin solicitar acceso.
+
+El informe final, el manual, el diagrama y la evidencia están en docs/02_Hito_3.
+El anexo del informe incluye la declaración de IA y el tratamiento de datos personales.
+El README explica cómo ejecutar el panel y probar que la revisión persiste al recargar.

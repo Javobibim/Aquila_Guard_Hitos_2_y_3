@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102747">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Aquila Guard para PC y Android</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+<a class="brand" href="/"><img src="assets/logo.png" alt="" width="52" height="52"><span>Aquila Guard<small>Instalación para PC y Android</small></span></a>
+<nav><a href="/">Volver a revisar</a><a href="privacy.html">Privacidad</a></nav>
+</header>
+<main>
+<div class="hero">
+<div><p class="eyebrow">La web es el acceso principal</p><h1>Úsala sin instalar nada.</h1><p>En un PC de la universidad, abre la web para revisar contenido y recuperar tus resúmenes con tu cuenta. No necesitas iniciar un servidor ni modificar la seguridad del equipo.</p><p><a class="button-link primary" href="index.html#inicio">Abrir Aquila Guard</a></p><p>Las siguientes opciones son adicionales para tus propios dispositivos.</p><button id="install-app" class="primary" hidden>Crear acceso a la app web (opcional)</button><p id="install-state" role="status" class="muted"></p></div>
+<div class="hero-card"><img src="assets/qr-app.svg" width="190" height="190" alt="Código QR para abrir Aquila Guard en Android"><b>Abre Aquila Guard en Android</b><a href="/">aquila-guard-a3ddd.web.app</a></div>
+</div>
+<div class="columns">
+<section class="card">
+<p class="eyebrow">PC · Windows</p>
+<h2>Revisión manual y avisos al navegar</h2>
+<p><a class="button-link primary" href="/">Abrir el analizador web</a></p>
+<p>Para recibir avisos al navegar, activa la extensión en Chrome, Edge o Brave y concede el acceso a sitios.</p>
+<p><a class="button-link" href="https://chromewebstore.google.com/detail/aquila-guard-beta/eaggmbmoeobgckjoihlgolbpdkekgnlo" target="_blank" rel="noopener">Versión publicada en Chrome Web Store</a></p>
+<p><a class="button-link" href="downloads/Aquila_Guard_Chrome_BETA___EXTENSION_VERSION__.zip" download>Extensión de prueba __EXTENSION_VERSION__ (.zip)</a></p>
+<p>La extensión muestra un semáforo y un signo rojo en el icono de Chrome cuando encuentra un dominio reportado.</p>
+<details><summary>Instalar la extensión de prueba</summary>
+<ol><li>Extrae el ZIP.</li><li>Abre la página de extensiones de tu navegador.</li><li>En modo desarrollador, pulsa <b>Cargar descomprimida</b> y selecciona la carpeta que contiene <code>manifest.json</code>.</li><li>Abre Aquila Guard, pulsa <b>Activar mis avisos</b> y recarga las pestañas que quieras revisar.</li></ol>
+<p>En computadores administrados, la instalación depende de la política de TI.</p>
+</details>
+</section>
+<section class="card">
+<p class="eyebrow">Teléfono o tablet · Android</p>
+<h2>Revisa enlaces y correos en Android</h2>
+<p><a class="button-link primary" href="/">Abrir la app web en Android</a></p>
+<p>La APK se distribuye en pruebas controladas. Si tienes acceso de prueba, usa el enlace que te entregó el equipo. También puedes revisar enlaces, mensajes y correos en la web desde tu teléfono.</p>
+</section>
+</div>
+<section class="card"><h2>Prueba los avisos de PC</h2><p>Activa la extensión y abre una de las pruebas controladas.</p>
+<p><a href="prueba-extension.html?next=https%3A%2F%2Fbancoestado.cl.acceso.example%2Fverificar">Probar aviso de dirección</a> · <a href="prueba-publicidad.html">Probar publicidad invasiva</a> · <a href="ayuda.html">Ayuda paso a paso</a></p></section>
+<section class="card"><h2>Revisión local</h2><p>El análisis usa reglas y una copia local de reportes. Iniciar sesión, sincronizar el historial y actualizar la lista requieren internet.</p></section>
+</main>
+<footer><a href="privacy.html">Privacidad</a></footer>
+<script src="install.js"></script>
+</body>
+</html>

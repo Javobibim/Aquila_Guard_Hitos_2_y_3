@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title">
+  <title id="title">Modelo de datos de Aquila Guard</title>
+  <style>text{font-family:Arial,sans-serif;fill:#163650;font-size:19px}.title{font-size:34px;font-weight:bold}.heading{font-size:23px;font-weight:bold}.label{font-size:16px}.card{fill:#eef5fa;stroke:#8ba6bf;stroke-width:2}.link{stroke:#163650;stroke-width:2;fill:none}</style>
+  <rect width="1200" height="720" fill="white"/>
+  <text x="52" y="56" class="title">Modelo de datos de Aquila Guard</text>
+  <text x="52" y="93">API académica · PGlite persistente · Migraciones 001 a 003</text>
+  <rect class="card" x="52" y="142" width="455" height="395" rx="12"/>
+  <text x="76" y="181" class="heading">analisis</text>
+  <text x="76" y="219">id uuid PK</text><text x="76" y="250">tipo varchar(12), CHECK</text>
+  <text x="76" y="281">resumen varchar(253)</text><text x="76" y="312">titulo text</text>
+  <text x="76" y="343">razones jsonb</text><text x="76" y="374">con_senales boolean</text>
+  <text x="76" y="405">recomendacion text</text><text x="76" y="436">version_reglas text</text>
+  <text x="76" y="467">nota varchar(300)</text><text x="76" y="498">creado_en timestamptz</text>
+  <rect class="card" x="665" y="142" width="482" height="222" rx="12"/>
+  <text x="690" y="181" class="heading">alertas</text>
+  <text x="690" y="219">id uuid PK</text><text x="690" y="250">analisis_id uuid FK UNIQUE</text>
+  <text x="690" y="281">revisada boolean</text><text x="690" y="312">nota varchar(300)</text>
+  <text x="690" y="343">creado_en timestamptz</text>
+  <path class="link" d="M507 239 H665"/>
+  <text x="519" y="223" class="label">1</text><text x="616" y="223" class="label">0..1</text>
+  <text x="519" y="265" class="label">Borrado en cascada</text>
+  <rect class="card" x="665" y="408" width="482" height="172" rx="12"/>
+  <text x="690" y="447" class="heading">analisis_reintentos</text>
+  <text x="690" y="484">clave uuid PK</text><text x="690" y="516">huella char(64) HMAC</text>
+  <text x="690" y="548">analisis_id uuid sin FK</text>
+  <path class="link" stroke-dasharray="8 6" d="M507 486 H665"/>
+  <text x="523" y="470" class="label">Referencia lógica</text>
+  <text x="52" y="633" class="label">El índice idx_analisis_fecha ordena por creado_en DESC.</text>
+  <text x="52" y="664" class="label">El registro de reintento conserva el ID tras borrar el análisis para rechazar repeticiones tardías.</text>
+</svg>

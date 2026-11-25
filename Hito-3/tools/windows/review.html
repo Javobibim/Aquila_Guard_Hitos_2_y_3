@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es-CL"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>Aquila Guard · Revisor para Windows</title>
+<style>
+ *{box-sizing:border-box}body{margin:0;background:#eef5fb;color:#112b48;font:18px/1.55 system-ui,sans-serif}
+ header{background:#102747;color:white;padding:22px max(20px,calc((100% - 780px)/2))}header strong{font-size:1.35rem}
+ main{width:min(780px,calc(100% - 32px));margin:28px auto}.card{background:white;border:1px solid #cfdfed;border-radius:16px;padding:24px;margin:16px 0}
+ h1,h2,p{margin:0 0 14px}label{display:block;font-weight:650;margin-top:12px}textarea,select,button,input{font:inherit}
+ textarea,select{width:100%;margin-top:4px;padding:10px;border:1px solid #6885a0;border-radius:8px;color:inherit}
+ textarea{resize:vertical}button{cursor:pointer;margin:12px 8px 0 0;padding:9px 15px;border-radius:8px;border:1px solid #52769b;background:white;color:#102747;font-weight:650}
+ button.primary{background:#173e66;color:white}.result{border-left:7px solid #6885a0}.result[data-risk=reported]{border-left-color:#a11932}.result[data-risk=signals]{border-left-color:#a86608}
+ form .primary{display:block;width:100%;min-height:48px;margin-right:0}
+ :focus-visible{outline:3px solid #205482;outline-offset:3px}
+ #advice{font-weight:650}
+ details summary{cursor:pointer}
+ li{margin-bottom:10px}li span{display:block}a{color:#205482}small{display:block}.links a{display:inline-block;margin:0 15px 6px 0}
+</style></head><body>
+<header><strong>Aquila Guard</strong><small>Revisión local de correo y SMS para Windows</small></header>
+<main>
+<section class="card">
+ <h1>Revisa el mensaje antes de abrir sus enlaces</h1>
+ <p>Pega el texto de un SMS o correo. Si tienes el correo original en Gmail, puedes descargarlo como archivo .eml y seleccionarlo aquí.</p>
+ <p id="intel" role="status">Preparando la copia de reportes…</p>
+ <form id="review" autocomplete="off">
+  <label for="type">Qué quieres revisar</label><select id="type"><option value="correo">Correo de Gmail u otro proveedor</option><option value="mensaje">SMS o mensaje</option></select>
+  <div id="file-area"><label for="file">Archivo .eml (opcional, hasta 2 MB)</label><input type="file" id="file" accept=".eml,message/rfc822"></div>
+  <label for="input">Texto del mensaje</label><textarea id="input" rows="6" maxlength="50000" spellcheck="false"></textarea>
+  <small>El análisis se realiza en esta ventana. El revisor no guarda ni envía el mensaje y no abre sus enlaces.</small>
+  <button class="primary" type="submit">Revisar sin abrir enlaces</button><button type="button" id="example">Cargar un ejemplo</button><button type="button" id="clear">Limpiar revisión</button>
+ </form>
+ <p id="status" role="status" aria-live="polite"></p>
+</section>
+<section id="result" class="card result" hidden><h2 id="title" tabindex="-1"></h2><p id="advice"></p><ul id="reasons"></ul><details id="coverage-details"><summary>Qué se pudo revisar</summary><small id="coverage"></small></details></section>
+<nav class="links" aria-label="Servicios opcionales"><a href="https://aquila-guard-a3ddd.web.app/?modo=telefono#revisar" rel="noreferrer" target="_blank">Consultar o reportar teléfono (en línea)</a><a href="https://mail.google.com/" rel="noreferrer" target="_blank">Abrir Gmail</a><a href="https://messages.google.com/web/" rel="noreferrer" target="_blank">Abrir Mensajes web</a></nav>
+</main>
+<!-- AQUILA_BUNDLE -->
+</body></html>

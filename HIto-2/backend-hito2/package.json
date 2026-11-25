@@ -1,0 +1,27 @@
+{
+  "name": "aquila-guard-hito2",
+  "version": "0.6.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx --env-file-if-exists=.env server/index.ts",
+    "start": "tsx --env-file-if-exists=.env server/index.ts",
+    "db:init": "tsx --env-file-if-exists=.env server/migrate.ts",
+    "test": "tsx --test tests/*.test.ts",
+    "check": "tsc --noEmit",
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "pg": "^8.16.0",
+    "zod": "^4.0.0",
+    "@electric-sql/pglite": "^0.3.14"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0",
+    "tsx": "^4.20.0",
+    "@types/express": "^5.0.0",
+    "@types/pg": "^8.15.0",
+    "@types/node": "^24.0.0"
+  }
+}

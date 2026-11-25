@@ -1,0 +1,21 @@
+{
+  "results": [
+    {
+      "name": "Panel local guarda análisis y alerta mediante la API, modifica lectura y recupera tras recarga",
+      "result": "passed"
+    },
+    {
+      "name": "Caída de conexión muestra un error legible, conserva entrada y permite reintentar",
+      "result": "passed"
+    },
+    {
+      "name": "Reinicio real del servidor conserva las dos revisiones y el estado de lectura en SQL",
+      "result": "passed"
+    },
+    {
+      "name": "El panel permite conectar y recuperar el historial con sessionStorage bloqueado",
+      "result": "passed"
+    }
+  ],
+  "errors": []
+}

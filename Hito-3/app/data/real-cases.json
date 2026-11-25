@@ -1,0 +1,102 @@
+{
+  "format": 1,
+  "preparedAt": "2026-11-01T19:25:10.943983+00:00",
+  "description": "Casos públicos reportados por PhishDestroy. El equipo comprobó cabeceras HEAD con TLS válido y HTTP 200, sin descargar páginas ni ejecutar scripts. No se garantiza que sigan disponibles mañana.",
+  "sourceFeed": "https://gitlab.com/phishdestroy/destroylist/-/raw/main/dns/content_active.json",
+  "sourceFeedSha256": "915a116b476583f5de7d40e0863056de9a03e8b5e5104e1dbe5d06618b21d83d",
+  "sourceLicenseNotice": "https://phishdestroy.io/dataset",
+  "cases": [
+    {
+      "id": "real-1",
+      "hostname": "de-paypal-sec.com",
+      "displayHostname": "de-paypal-sec[.]com",
+      "url": "https://de-paypal-sec.com/",
+      "targetBrand": "PayPal",
+      "source": "PhishDestroy",
+      "sourceUrl": "https://api.destroy.tools/v1/check?domain=de-paypal-sec.com",
+      "apiCheckedAt": "2026-11-01T19:23:36.603Z",
+      "providerLastAlive": "2026-11-01T11:49:47.000Z",
+      "providerHttpStatus": 200,
+      "providerSiteStatus": "alive",
+      "providerThreat": true,
+      "severity": "critical",
+      "directCheck": {
+        "checkedAt": "2026-11-01T19:22:37.969389+00:00",
+        "method": "HEAD",
+        "scriptsExecuted": false,
+        "redirectsFollowed": false,
+        "bodyDownloaded": false,
+        "httpStatus": 200,
+        "contentType": "text/html",
+        "responded": true
+      },
+      "expected": "reported"
+    },
+    {
+      "id": "real-2",
+      "hostname": "about-metamask-wallet.codedesign.app",
+      "displayHostname": "about-metamask-wallet[.]codedesign[.]app",
+      "url": "https://about-metamask-wallet.codedesign.app/",
+      "targetBrand": "MetaMask",
+      "source": "PhishDestroy",
+      "sourceUrl": "https://api.destroy.tools/v1/check?domain=about-metamask-wallet.codedesign.app",
+      "apiCheckedAt": "2026-11-01T19:23:37.487Z",
+      "providerLastAlive": "2026-11-01T11:47:03.000Z",
+      "providerHttpStatus": 200,
+      "providerSiteStatus": "alive",
+      "providerThreat": true,
+      "severity": "critical",
+      "directCheck": {
+        "checkedAt": "2026-11-01T19:22:39.187127+00:00",
+        "method": "HEAD",
+        "scriptsExecuted": false,
+        "redirectsFollowed": false,
+        "bodyDownloaded": false,
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "responded": true
+      },
+      "expected": "reported"
+    },
+    {
+      "id": "real-3",
+      "hostname": "login.microsoftonline.hmvegn.ie",
+      "displayHostname": "login[.]microsoftonline[.]hmvegn[.]ie",
+      "url": "https://login.microsoftonline.hmvegn.ie/",
+      "targetBrand": "Microsoft",
+      "source": "PhishDestroy",
+      "sourceUrl": "https://api.destroy.tools/v1/check?domain=login.microsoftonline.hmvegn.ie",
+      "apiCheckedAt": "2026-11-01T19:15:47.871Z",
+      "providerLastAlive": "2026-11-01T11:51:46.000Z",
+      "providerHttpStatus": 200,
+      "providerSiteStatus": "alive",
+      "providerThreat": true,
+      "severity": "critical",
+      "directCheck": {
+        "checkedAt": "2026-11-01T19:21:42.668528+00:00",
+        "method": "HEAD",
+        "scriptsExecuted": false,
+        "redirectsFollowed": false,
+        "bodyDownloaded": false,
+        "httpStatus": 200,
+        "contentType": "text/html",
+        "responded": true
+      },
+      "expected": "reported"
+    }
+  ],
+  "controls": [
+    {
+      "id": "control-1",
+      "url": "https://www.microsoft.com/",
+      "displayHostname": "www.microsoft.com",
+      "expected": "no_match",
+      "note": "Control del dominio oficial; no prueba que cualquier contenido dentro del dominio sea seguro."
+    }
+  ],
+  "limitations": [
+    "El estado de un sitio puede cambiar antes de la presentación.",
+    "La coincidencia con la misma lista prueba integración, no eficacia independiente.",
+    "La comprobación directa fue HEAD: no se descargó HTML ni se ejecutaron scripts. El aviso automático se prueba con contenido benigno interceptado."
+  ]
+}

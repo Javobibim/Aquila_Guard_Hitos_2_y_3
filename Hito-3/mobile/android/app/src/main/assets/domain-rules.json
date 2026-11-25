@@ -1,0 +1,101 @@
+{
+  "format": 1,
+  "source": "shared/advanced.js",
+  "brands": [
+    {
+      "name": "BancoEstado",
+      "tokens": [
+        "bancoestado"
+      ],
+      "domains": [
+        "bancoestado.cl"
+      ]
+    },
+    {
+      "name": "Banco de Chile",
+      "tokens": [
+        "bancochile"
+      ],
+      "domains": [
+        "bancochile.cl"
+      ]
+    },
+    {
+      "name": "Santander",
+      "tokens": [
+        "santander"
+      ],
+      "domains": [
+        "santander.cl",
+        "santander.com"
+      ]
+    },
+    {
+      "name": "BCI",
+      "tokens": [
+        "bci"
+      ],
+      "domains": [
+        "bci.cl"
+      ]
+    },
+    {
+      "name": "PayPal",
+      "tokens": [
+        "paypal"
+      ],
+      "domains": [
+        "paypal.com"
+      ]
+    },
+    {
+      "name": "Microsoft",
+      "tokens": [
+        "microsoft",
+        "outlook",
+        "office365"
+      ],
+      "domains": [
+        "microsoft.com",
+        "outlook.com",
+        "office.com",
+        "microsoftonline.com"
+      ]
+    },
+    {
+      "name": "Google",
+      "tokens": [
+        "google",
+        "gmail"
+      ],
+      "domains": [
+        "google.com",
+        "gmail.com"
+      ]
+    },
+    {
+      "name": "Apple",
+      "tokens": [
+        "apple",
+        "icloud"
+      ],
+      "domains": [
+        "apple.com",
+        "icloud.com"
+      ]
+    },
+    {
+      "name": "Mercado Libre",
+      "tokens": [
+        "mercadolibre",
+        "mercadopago"
+      ],
+      "domains": [
+        "mercadolibre.cl",
+        "mercadolibre.com",
+        "mercadopago.cl",
+        "mercadopago.com"
+      ]
+    }
+  ]
+}
