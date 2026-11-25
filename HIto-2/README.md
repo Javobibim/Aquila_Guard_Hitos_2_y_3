@@ -5,7 +5,7 @@ Servicio que revisa contenido sospechoso y guarda un resumen con su alerta para 
 | Integrante | Usuario de GitHub |
 |---|---|
 | Diego Lopez | Completar con su cuenta |
-| Javier Rodriguez | Completar con su cuenta |
+| Javier Rodriguez | Javobibim |
 | Milovan Solis | Completar con su cuenta |
 
 ## Entregables
