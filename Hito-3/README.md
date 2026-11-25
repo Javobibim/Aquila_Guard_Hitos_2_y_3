@@ -14,7 +14,7 @@ Proyecto de Arquitectura de Desarrollo Móvil y Web, INGT1003, sección 001, Uni
 | Integrante | Usuario de GitHub |
 |---|---|
 | Diego Lopez | Pendiente de completar por el equipo |
-| Javier Rodriguez | Pendiente de completar por el equipo |
+| Javier Rodriguez | Javobibim |
 | Milovan Solis | Pendiente de completar por el equipo |
 
 ## Entregables
